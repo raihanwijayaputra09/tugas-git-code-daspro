@@ -20,10 +20,18 @@ while percobaan < 3:
         
         if menu == 1:
             print('\n=== Kunjungan Pasien ===')
-            while a < 9:
+            turun = 0
+            sebelumnya = None
+            while turun <  2 :
                 jumlahPengunjung = int(input('Input Jumlah pengunjung: '))
+                if sebelumnya is not None and jumlahPengunjung < sebelumnya:
+                    turun+= 1
+                    print(f'Pengunjung Turun sebanyak {turun} kali.')
+                else:
+                    turun = 0
                 dataPengunjung.append(jumlahPengunjung)
-                a+=1
+                sebelumnya = jumlahPengunjung
+               
 
             print(f'Total penunjung yang meningkat: {sum(dataPengunjung)}')
             if sum(dataPengunjung)<50:
@@ -33,7 +41,7 @@ while percobaan < 3:
                 print('Keputusan: Menambah 1 cabang baru')
                 break
             else:
-                print('Keputusan: Menambah 2 Cabang abru')
+                print('Keputusan: Menambah 2 Cabang baru')
                 break
         elif menu == 2:
             print('===== Data Obat =====')
